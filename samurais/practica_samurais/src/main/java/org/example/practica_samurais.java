@@ -55,7 +55,7 @@ public class practica_samurais {
         }while (repetir1 == true);
         do {
             System.out.println("Equipo 2");
-            System.out.println("introduce potencia de los samurais");
+            System.out.println("introduce potentiate de los samurais");
             String equipo_2 = sc.nextLine();
             String[] subequipo_2 = equipo_2.split(" ");
             repetir2 = false;
