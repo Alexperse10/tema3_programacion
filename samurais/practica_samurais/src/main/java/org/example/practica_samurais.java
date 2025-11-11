@@ -12,8 +12,8 @@ public class practica_samurais {
         int contadorjugador2=0;
         //int []equipo1 = new int[7];
         //int []equipo2 = new int[7];
-        int []vector1 = {4,6,1,3,7,8,1};
-        int []vector2 = {5,6,1,7,8,2,3};
+        //int []vector1 = {4,6,1,3,7,8,1};
+        //int []vector2 = {5,6,1,7,8,2,3};
        // String equipo_1 = "1,3,5,5,7,8,2";
        // String equipo_2 = "1,3,5,5,7,8,1";
        // String [] subequipo_1 = equipo_1.split(",");
@@ -32,10 +32,15 @@ public class practica_samurais {
             repetir1 = false;
             int suma1 =0;
             for (int i = 0; i < subequipo_1.length; i++) {
-                int numero1 = Integer.parseInt(subequipo_1[i]);
-                suma1 += numero1;
-                equiponumero_1[i] = numero1;
-
+                try {
+                    int numero1 = Integer.parseInt(subequipo_1[i]);
+                    suma1 += numero1;
+                    equiponumero_1[i] = numero1;
+                }catch (NumberFormatException error){
+                    System.out.println("error introduce solo numeros validos");
+                    repetir1 = true;
+                    break;
+                }
             }
             if (subequipo_1.length !=7) {
                 System.out.println("Error. El equipo no tiene 7 samurais.");
@@ -56,9 +61,13 @@ public class practica_samurais {
             repetir2 = false;
             int suma2 = 0;
             for (int i = 0; i < subequipo_2.length; i++) {
-                int numero2 = Integer.parseInt(subequipo_2[i]);
-                suma2 += numero2;
-                equiponumero_2[i] = numero2;
+                try {
+                    int numero2 = Integer.parseInt(subequipo_2[i]);
+                    suma2 += numero2;
+                    equiponumero_2[i] = numero2;
+                }catch (NumberFormatException error){
+                    System.out.println("error introduce valores validos");
+                }
             }if (subequipo_2.length != 7){
                 System.out.println("Error. El equipo no tiene 7 samurais");
                 repetir2=true;
