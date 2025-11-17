@@ -14,7 +14,7 @@ public class primitiva {
         int [] complementario = new int[1];
         int [] numero_completo = new int[8];
         boolean repetir = false;
-        int [] sorteo = new int[6]; // creo un vector para realizar el sorteo, este vector lo rellono con los numeros aleatorios
+        int [] sorteonumero = new int[6]; // creo un vector para realizar el sorteo, este vector lo rellono con los numeros aleatorios
 
             System.out.println("introduce los datos de tu boleto");
             String numero_complete = sc.nextLine();
@@ -36,7 +36,12 @@ public class primitiva {
                     for (int i =0; i<6; i++){
                         seisnumeros [i] = numero[i]; // aqui hago un copia pega de los primeros 6 numeros
                     }
-                    reintegro [0] = numero [6];
+                    reintegro [0] = numero [6];  // el sexto numero es el reintegro.
+                    for (int i =0; i<sorteonumero.length; i++){  // cuidado hay que hacerlo con el sorteo ya es hasta seis
+                        sorteonumero [i] = aleatorio.nextInt(49)+1;
+                     }
+                    sorteonumero = Arrays.stream(sorteonumero).distinct().toArray();
+
                 }else {
                     System.out.println("saliendo del programa...");
                 }
