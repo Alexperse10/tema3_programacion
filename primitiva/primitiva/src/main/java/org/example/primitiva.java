@@ -10,11 +10,9 @@ public class primitiva {
         Random aleatorio = new Random();
 
 
-        int[] reintegro = new int[1];
-        int[] complementario = new int[1];
         int[] numero_completo = new int[8];
         boolean repetir = false;
-        int[] sorteonumero = new int[6]; // creo un vector para realizar el sorteo, este vector lo rellono con los numeros aleatorios
+        int[] sorteonumero = new int[6]; // creo un vector para realizar el sorteo, este vector lo relleno con los numeros aleatorios
 
         System.out.println("introduce los datos de tu boleto");
         String numero_complete = sc.nextLine();
@@ -36,39 +34,42 @@ public class primitiva {
             for (int i = 0; i < 6; i++) {
                 seisnumeros[i] = numero[i]; // aqui hago un copia pega de los primeros 6 numeros
             }
-            //reintegro[0] = numero[6];  // el sexto numero es el reintegro.
+            int[] duplicados =new int[6]; // se crea array vacio para rellenarlo de posibles numeros
 
             do {
-                for (int i = 0; i < sorteonumero.length; i++) {  // cuidado hay que hacerlo con el sorteo ya es hasta seis, despues con reintegro
-                    sorteonumero[i] = aleatorio.nextInt(49) + 1; //desde uno hasta 49
+                for (int i = 0; i < 6; i++) {  // cuidado hay que hacerlo con el sorteo o numero 6
+                    duplicados[i] = aleatorio.nextInt(49) + 1; //desde uno hasta 49
 
 
                 }
-                sorteonumero = Arrays.stream(sorteonumero).distinct().toArray();
+                sorteonumero = Arrays.stream(duplicados).distinct().toArray(); // aqui compruebo numeros iguales, los que son iguales se eliminan, se introducen nuevos hasta que sean diferentes
                 System.out.println(Arrays.toString(sorteonumero));
-            } while (sorteonumero.length < 6);
+            } while (sorteonumero.length < 6); // si hay menos de seis se vuelve a generar
             Arrays.sort(sorteonumero);
             System.out.println(Arrays.toString(sorteonumero));
-            int[] sorteocomplementario = new int[1];
+
+            int reintegro = aleatorio.nextInt(10);
+            int complementario;
             do {
-
-                for (int i = 0; i < sorteocomplementario.length; i++) {
-                    sorteocomplementario[i] = aleatorio.nextInt(49)+1;
-                }
-                sorteocomplementario = Arrays.stream(sorteonumero).distinct().toArray();
-
-            } while (sorteocomplementario.length < 0) ;
-
-                for (int i =0; i< sorteocomplementario.length; i++){
-                    reintegro [i] = aleatorio.nextInt(9);
+                 complementario = aleatorio.nextInt(49) + 1;
+                repetir = false;
+                for (int i = 0; i < sorteonumero.length; i++) {
+                    if (sorteonumero[i] == complementario) {
+                        repetir = true;
+                    }
                 }
 
+            }while (repetir == true) ;
+            System.out.println("el complementario es:"+complementario);
+            System.out.println("el reintegro es: " + reintegro);
 
-            }else{
-                System.out.println("saliendo del programa...");
-            }
-
-
+        } else {
+            System.out.println("saliendo del programa...");
         }
+
+
     }
+}
+
+
 
