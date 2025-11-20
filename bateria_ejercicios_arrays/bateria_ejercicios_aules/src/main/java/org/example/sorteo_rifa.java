@@ -11,6 +11,7 @@ public class sorteo_rifa {
         int [] rango_aleatorio = new int [5];
         for (int i =0; i< rango_aleatorio.length; i++ ) {
             rango_aleatorio [i] = aleatorio.nextInt(100)+1;
+
         }
     }
 }
