@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class zx_spectrum {
@@ -7,7 +8,6 @@ public class zx_spectrum {
         Scanner sc = new Scanner(System.in);
         int ancho;
         int alto;
-
 
         System.out.println("**** VALIDADOR DE COMPATIBILIDAD ZX SPECTRUM ******");
         do {
@@ -25,11 +25,33 @@ public class zx_spectrum {
                 }
             } while ((alto > 48 || alto<0) || alto%8!=0);
 
-        int pantalla [][] = new int[ancho][alto];
+        char pantalla [][] = new char[alto][ancho]; // alto lo he puesto como la i y el ancho la j
+        // tener en cuenta que cada valor de ancho(j) es una columna
+            for (int i=0; i< alto; i++) {
+                System.out.println("introduce linea a linea los colores de tu imagen para cada pixel, linea "+(i+1));
+                String linea = sc.next();
+                if (linea.matches("[a-oA-O]+")){
+                    System.out.println("coincide");
+                }else{
+                    System.out.println("no coincide");
+                    break;
 
-            System.out.println("introduce linea a linea los colores de tu imagen para cada pixel");
+                }
+                for (int j = 0; j < ancho; j++) {
+                    pantalla[i][j] = linea.charAt(j); // guarga el valor de j en cada posicion
+                    if (pantalla[i][j] = Arrays.stream().distinct().toArray()){
 
+                    }
+                }
 
+            }
+
+            for (int i =0; i<alto; i++){
+                for (int j=0; j< ancho; j++){
+                    System.out.print(pantalla[i][j]+" ");
+                }
+                System.out.println();
+            }
         }
     }
 
