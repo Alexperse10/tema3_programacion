@@ -37,14 +37,13 @@ public class zx_spectrum {
                     break;
 
                 }
-                for (int j = 0; j < ancho; j++) {
-                    pantalla[i][j] = linea.charAt(j); // guarga el valor de j en cada posicion
-                    if (pantalla[i][j] = Arrays.stream().distinct().toArray()){
-
-                    }
+                for (int j =0; j<ancho; j++){
+                    pantalla[i][j] = linea.charAt(j);
                 }
 
             }
+
+
 
             for (int i =0; i<alto; i++){
                 for (int j=0; j< ancho; j++){
@@ -52,6 +51,29 @@ public class zx_spectrum {
                 }
                 System.out.println();
             }
+            boolean compatible_pantalla = true;
+            for (int filabloque=0; filabloque<alto; filabloque+=8){
+                for (int colores_bloque=0; colores_bloque<ancho;colores_bloque +=8){
+
+                    String bloque_string = "";
+
+                for (int i= filabloque; i<filabloque +8; i++){
+                    for (int j = colores_bloque; j< colores_bloque +8; j++){
+                        bloque_string += pantalla[i][j];
+                    }
+                }
+                int[] codigos = bloque_string.chars().distinct().toArray();
+                if (codigos.length>2){
+                    compatible_pantalla = false;
+                }
+                }
+            }
+            if (compatible_pantalla){
+                System.out.println("Es compatible con zx spectrum");
+            }else {
+                System.out.println("no es compatible");
+            }
+
         }
     }
 
